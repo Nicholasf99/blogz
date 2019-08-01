@@ -1,39 +1,43 @@
 <!doctype html>
 <html>
+
     <head>
         <title>{{title}}</title>
+    
         <style>
-            .error {
+            * {
+            font-family: Verdana;
+            }
+            .error{
                 color: red;
                 font-style: italic;
             }
-            h1 {
-                text-align: center;
+            
+            .correct{
+                color: green;
+                font-style: italic;
             }
-            textarea {
-                width: 200px;
-                height: 100px;
+            label{
+                font-weight: bold
             }
         </style>
     </head>
-<body>
+    <body>
 
-    <div>
-        <a href='/blog'>Main Blog Page</a>
-        <a href='/newpost'>Add a Blog Entry!</a>
-       
-    </div>
-    
+
+        <h3><a href = "/">home</a> &nbsp &nbsp &nbsp &nbsp &nbsp <a href="/blog">all posts</a> &nbsp &nbsp &nbsp &nbsp &nbsp<a href="/blog/newpost">new post</a>
+            <span style="margin-left:16em"><a href = "/login">login</a> </span> &nbsp &nbsp &nbsp &nbsp &nbsp <a href="/logout">logout</a></h3>   
     {% with messages = get_flashed_messages(with_categories=True) %}
-        <ul>
+        <ul class=flashes>
         {% for category,message in messages %}
             <li class="{{category}}">{{message}}</li>
         {% endfor %}
         </ul>
-    {% endwith %}
-
+    {% endwith %}       
+    
     {% block content %}
     {% endblock %}
 
-</body>
+    </body>
+
 </html>
